@@ -1,0 +1,2 @@
+program.hs:18:1-9: error: This definition doesn't define any variables.
+	Variables must begin with a lowercase letter.

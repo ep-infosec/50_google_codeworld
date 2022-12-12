@@ -1,0 +1,188 @@
+/*
+ * Copyright 2020 The CodeWorld Authors. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+body {
+  margin: 0px 0px 0px 0px;
+}
+
+#popout {
+  display: block;
+  float: right;
+  clear: both;
+  top: 10px;
+  right: 10px;
+}
+
+#popout a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 3px;
+  border: dotted var(--doc-popuout-a-border) 1px;
+  border-radius: 5px;
+}
+
+pre {
+  background: var(--doc-pre-background) !important;
+}
+
+.md pre.tilde {
+  background-color: var(--doc-tilde-bg) !important;
+}
+
+.md pre.tilde.clickable:hover {
+  background-color: var(--doc-tilde-clickable-hover-bg) !important;
+  cursor: pointer;
+}
+
+.md div.admonition.collapsible {
+  cursor: pointer;
+}
+
+.md div.admonition.collapsible::before {
+  content: "+";
+  font-weight: bold;
+  font-size: 150%;
+  position: relative;
+  top: 2px;
+  color: var(--doc-before-admonition-collapsible);
+  left: -2.95rem;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.md div.admonition.collapsible.expanded::before {
+  content: "\2013";
+  font-weight: bold;
+  font-size: 150%;
+  position: relative;
+  top: 2px;
+  color: var(--doc-before-admonition-collapsible-expanded);
+  left: -2.95rem;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.md div.admonition.collapsible:not(.expanded) > .admonition-title::after {
+  content: "Click to expand...";
+  color: var(--doc-after-admonition-title);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  font-weight: normal;
+  padding-right: 1em;
+  float: right;
+}
+
+.md div.admonition.collapsible:not(.expanded) > .admonition-title {
+  border-bottom: none;
+}
+
+.md div.admonition.collapsible:not(.expanded) > :not(.admonition-title) {
+  display: none;
+}
+
+.md table.table tr:nth-child(even) {
+  background: var(--doc-tr-even-bg) !important;
+}
+
+.md table.table tr:nth-child(odd) {
+  background: var(--doc-tr-odd-bg);
+}
+
+.accordion {
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  background: var(--doc-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+}
+
+.accordion:first-of-type {
+  position: fixed;
+  height: 100%;
+  width: 19rem;
+  overflow-y: auto;
+  border-right: 3px solid var(--doc-helpacc-border-right);
+}
+
+.ui-accordion-header + .accordion {
+  padding: 0;
+  padding-left: 0.5rem;
+  overflow: unset;
+  border: none;
+}
+
+.accordion .accentry {
+  padding: 0;
+  padding-right: 0.5rem;
+}
+
+#help {
+  position: relative;
+  margin-left: 20rem;
+  overflow: auto;
+  color: var(--doc-color);
+  background: var(--doc-bg);
+}
+
+#help #package-header {
+  display: none;
+}
+
+#help .subs.instances {
+  display: none;
+}
+
+h3.ui-accordion-header {
+  color: var(--doc-accordion-color);
+  background: var(--doc-accordion-background);
+}
+
+h3.ui-accordion-header-active {
+  color: var(--doc-expanded-accordion-color);
+  background: var(--doc-expanded-accordion-background);
+}
+
+div.ui-accordion-content {
+  background: var(--doc-accordion-background);
+}
+
+.ui-widget-content a {
+  color: var(--doc-accordion-color);
+}
+
+.md svg.diagram {
+  fill: var(--doc-svg-fill) !important;
+  stroke: var(--doc-svg-stroke) !important;
+}
+
+.src {
+  background: var(--haddock-p-bg) !important;
+}
+
+table.info {
+  background-color: var(--haddock-lang-nameplate) !important;
+}
+
+#interface .src .selflink {
+  background: var(--haddock-selflink-bg) !important;
+}
+
+#table-of-contents {
+  background: var(--haddock-toc-bg) !important;
+}

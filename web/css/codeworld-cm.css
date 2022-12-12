@@ -1,0 +1,472 @@
+/*
+ * Copyright 2020 The CodeWorld Authors. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+.CodeMirror {
+  font-family: "Source Code Pro", monospace;
+  font-size: 9pt;
+}
+
+.CodeMirror-ruler {
+  z-index: 1;
+}
+
+pre.cm-s-default span.cm-builtin,
+div.CodeMirror span.cm-builtin {
+  color: var(--builtin);
+  font-weight: bold;
+}
+
+pre.cm-s-default span.cm-builtin-2,
+div.CodeMirror span.cm-builtin-2 {
+  color: var(--builtin-2);
+  font-weight: bold;
+}
+
+pre.cm-s-default span.cm-keyword,
+div.CodeMirror span.cm-keyword {
+  color: var(--keyword);
+  font-weight: bold;
+}
+
+pre.cm-s-default span.cm-deprecated,
+div.CodeMirror span.cm-deprecated {
+  color: var(--deprecated);
+  font-weight: bold;
+  text-decoration: line-through;
+}
+
+pre.cm-s-default span.cm-variable,
+div.CodeMirror span.cm-variable {
+  color: var(--variable);
+}
+
+pre.cm-s-default span.cm-variable-2,
+div.CodeMirror span.cm-variable-2 {
+  color: var(--variable2);
+}
+
+pre.cm-s-default span.cm-comment,
+div.CodeMirror span.cm-comment {
+  color: var(--comment);
+}
+
+pre.cm-s-default span.cm-string,
+div.CodeMirror span.cm-string {
+  color: var(--string);
+}
+
+pre.cm-s-default span.cm-meta,
+div.CodeMirror span.cm-meta {
+  color: var(--meta);
+}
+
+pre.cm-s-default span.cm-qualifier,
+div.CodeMirror span.cm-qualifier {
+  color: var(--qualifier);
+}
+
+pre.cm-s-default span.cm-number,
+div.CodeMirror span.cm-number {
+  color: var(--number);
+}
+
+pre.cm-s-default span.cm-bracket,
+div.CodeMirror span.cm-bracket {
+  color: var(--bracket);
+}
+
+pre.cm-s-default span.cm-bracket-0,
+div.CodeMirror span.cm-bracket-0 {
+  font-weight: bold;
+  color: var(--bracket-0);
+  font-size: 1.25em;
+  letter-spacing: -0.12em;
+}
+
+span.cm-bracket-0.cm-layout:before {
+  font-size: calc(0.8em);
+}
+
+pre.cm-s-default span.cm-bracket-1,
+div.CodeMirror span.cm-bracket-1 {
+  font-weight: bold;
+  color: var(--bracket-1);
+  font-size: 1.12em;
+  letter-spacing: -0.064em;
+}
+
+span.cm-bracket-1.cm-layout:before {
+  font-size: 0.893em;
+}
+
+pre.cm-s-default span.cm-bracket-2,
+div.CodeMirror span.cm-bracket-2 {
+  font-weight: bold;
+  color: var(--bracket-2);
+}
+
+pre.cm-s-default span.cm-bracket-3,
+div.CodeMirror span.cm-bracket-3 {
+  font-weight: bold;
+  color: var(--bracket-3);
+}
+
+pre.cm-s-default span.cm-bracket-4,
+div.CodeMirror span.cm-bracket-4 {
+  font-weight: bold;
+  color: var(--bracket-4);
+}
+
+pre.cm-s-default span.cm-bracket-5,
+div.CodeMirror span.cm-bracket-5 {
+  font-weight: bold;
+  color: var(bracket-5);
+}
+
+pre.cm-s-default span.cm-bracket-6,
+div.CodeMirror span.cm-bracket-6 {
+  font-weight: bold;
+  color: var(bracket-6);
+}
+
+pre.cm-s-default span.cm-bracket-7,
+div.CodeMirror span.cm-error {
+  color: var(bracket-7);
+}
+
+/*
+  Make matching and non-matching brackets look nicer.
+  Both classes starting with CodeMirror are applied only
+  when the cursor is adjacent to the bracket.
+*/
+div.CodeMirror span.CodeMirror-matchingbracket {
+  outline: solid var(--matchingbracket) 0.1em;
+}
+
+div.CodeMirror span.CodeMirror-nonmatchingbracket {
+  outline: solid var(--nonmatchingbracket) 0.1em;
+}
+
+/*
+  Always highlight non-matching closing bracket,
+  regardless of the cursor position.
+*/
+pre.cm-s-default span.cm-non_matching_bracket,
+div.CodeMirror span.cm-non_matching_bracket {
+  font-weight: bold;
+  color: var(--nonmatchingbracket);
+}
+
+/* Highlighting for matches to the selected word. */
+div.CodeMirror span.cm-matchhighlight {
+  background-color: var(--matchhighlight);
+}
+
+.CodeMirror-selection-highlight-scrollbar {
+  background-color: var(--selection-highlight-scrollbar);
+}
+
+/* Grayed-out style for the empty editor placeholder. */
+.CodeMirror pre.CodeMirror-placeholder {
+  color: var(--cm-placeholder);
+}
+
+/* Style overrides for the autocomplete box and doc-on-hover. */
+
+#function-details {
+  z-index: 10;
+}
+
+.CodeMirror-hint,
+.hover-decl {
+  color: var(--hover-decl);
+  font-family: "Source Code Pro", monospace;
+  font-size: 9pt;
+  white-space: pre-line;
+}
+
+.hover-decl {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+.CodeMirror-hint .hint-word,
+.hover-decl .hint-word {
+  font-weight: bold;
+  color: var(--hint-word);
+}
+
+.CodeMirror-hint .hint-keyword,
+.hover-decl .hint-keyword {
+  font-weight: bold;
+  color: var(--hint-keyword);
+}
+
+.CodeMirror-hints {
+  background: var(--hints-list-bg);
+}
+
+.CodeMirror-hint {
+  max-width: 40em;
+}
+
+li.CodeMirror-hint-active {
+  background: var(--hint-active-bg);
+  color: var(--hint-active);
+}
+
+.CodeMirror-hover-tooltip,
+.CodeMirror-lint-tooltip,
+.hint-description,
+.function-tooltip-styling {
+  background-color: var(--hover-tooltip);
+  border-radius: 0.5em;
+  border: 1px solid var(--hover-tooltip-border);
+  box-shadow: 0.1em 0.1em 0.1em var(--hover-tooltip-shadow);
+  min-height: 1em;
+  max-height: 20em;
+  min-width: 5em;
+  overflow: hidden;
+  padding: 0.3em 0.5em;
+  transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -webkit-transition: opacity 0.4s;
+}
+
+.CodeMirror-lint-tooltip {
+  color: var(--lint-tooltip-color);
+}
+
+.hint-description {
+  color: var(--hint-description-color);
+}
+
+.hint-description-replacement-note {
+  border-top: 1px solid black;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.function-tooltip-styling .hover-decl {
+  white-space: nowrap;
+}
+
+.CodeMirror-hover-tooltip {
+  opacity: 0;
+  position: fixed;
+  max-width: 30em;
+}
+
+.hint-description {
+  position: absolute;
+  height: 14.2em;
+  width: 20em;
+  z-index: 11;
+}
+
+div.fade {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.CodeMirror-hover-tooltip div.fade {
+  background-image: linear-gradient(
+    to bottom,
+    var(--hover-tooltip-grad-start) 0em,
+    var(--hover-tooltip-grad-start) 17em,
+    var(--hover-tooltip) 20em
+  );
+}
+
+.hint-description div.fade {
+  background-image: linear-gradient(
+    to bottom,
+    var(--hover-tooltip-grad-start) 0em,
+    var(--hover-tooltip-grad-start) 11.2em,
+    var(--hover-tooltip) 14.2em
+  );
+}
+
+.hover-doc {
+  color: var(--hover-doc-color);
+  padding-top: 0.5em;
+  font-size: 11pt;
+}
+
+div.CodeMirror-lint-message-warning,
+div.CodeMirror-lint-message-error {
+  padding-left: calc(18px + 0.5em);
+}
+
+div.CodeMirror-lint-message-warning:not(:last-child):after,
+div.CodeMirror-lint-message-error:not(:last-child):after {
+  content: "";
+  border-bottom: solid var(--lint-message-border-bottom) 1px;
+  display: block;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Styles needed for the dialog add-on, used for search. */
+
+.CodeMirror-dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: var(--dialog-bg);
+  z-index: 15;
+  padding: 0.1em 0.8em;
+  overflow: hidden;
+  color: var(--dialog);
+}
+
+.CodeMirror-dialog-top {
+  border-bottom: 1px solid var(--dialog-border);
+  top: 0;
+}
+
+.CodeMirror-dialog-bottom {
+  border-top: 1px solid var(--dialog-border);
+  bottom: 0;
+}
+
+.CodeMirror-dialog input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 20em;
+  color: inherit;
+  font-family: "Source Code Pro", monospace;
+}
+
+.CodeMirror-dialog button {
+  font-size: 70%;
+}
+
+.marked {
+  background: var(--marked-bg);
+}
+
+/* source-code-pro-regular - latin */
+@font-face {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../SourceCodePro/source-code-pro-v7-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Source Code Pro"), local("SourceCodePro-Regular"),
+    url("../SourceCodePro/source-code-pro-v7-latin-regular.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../SourceCodePro/source-code-pro-v7-latin-regular.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../SourceCodePro/source-code-pro-v7-latin-regular.woff")
+      format("woff"),
+    /* Modern Browsers */
+      url("../SourceCodePro/source-code-pro-v7-latin-regular.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../SourceCodePro/source-code-pro-v7-latin-regular.svg#SourceCodePro")
+      format("svg");
+  /* Legacy iOS */
+}
+
+/* source-code-pro-bold - latin */
+@font-face {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../SourceCodePro/source-code-pro-v7-latin-700.eot");
+  /* IE9 Compat Modes */
+  src: local("Source Code Pro Bold"), local("SourceCodePro-Bold"),
+    url("../SourceCodePro/source-code-pro-v7-latin-700.eot?#iefix")
+      format("embedded-opentype"),
+    /* IE6-IE8 */ url("../SourceCodePro/source-code-pro-v7-latin-700.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../SourceCodePro/source-code-pro-v7-latin-700.woff") format("woff"),
+    /* Modern Browsers */
+      url("../SourceCodePro/source-code-pro-v7-latin-700.ttf")
+      format("truetype"),
+    /* Safari, Android, iOS */
+      url("../SourceCodePro/source-code-pro-v7-latin-700.svg#SourceCodePro")
+      format("svg");
+  /* Legacy iOS */
+}
+
+span.cm-layout {
+  position: relative;
+}
+
+span.cm-layout:first-child:before,
+span:not(.cm-layout) + span.cm-layout:before {
+  content: "\00BB";
+  position: absolute;
+  left: -0.65em;
+  top: 0;
+  color: var(--cm-layout);
+  font-weight: normal;
+  letter-spacing: 0;
+}
+
+.CodeMirror pre.CodeMirror-line,
+.CodeMirror pre.CodeMirror-placeholder {
+  padding-left: 0.5em;
+}
+
+.CodeMirror-buttonsPanel {
+  font-size: 1.25em;
+  background-color: var(--buttonsPanel-bg);
+  border-bottom: solid var(--border-bottom) 1px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.CodeMirror-buttonsPanel div.cw-toolbar-button {
+  display: inline-block;
+  margin: 2px 0.2em 0em 0.2em;
+  text-align: center;
+  width: 2em;
+  height: 1em;
+  color: var(--cw-toolbar-button);
+}
+
+.CodeMirror-buttonsPanel div.cw-toolbar-button:hover {
+  color: var(--cw-toolbar-button-hover);
+}
+
+.CodeMirror-buttonsPanel div.cw-toolbar-button:active {
+  transform: translate(1px, 1px);
+  color: var(--cw-toolbar-button-active);
+}
+
+.cm-s-default.CodeMirror {
+  line-height: 1.4em;
+}
+
+.cm-s-default .CodeMirror-linenumber {
+  padding: 0 5px;
+}
+
+.cm-s-ambiance .cm-comment {
+  font-style: normal;
+}

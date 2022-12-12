@@ -1,0 +1,66 @@
+Name:                codeworld-base
+Version:             0.2.0.0
+Synopsis:            Replacement base module for CodeWorld
+License-file:        LICENSE
+Author:              The CodeWorld Authors
+Maintainer:          Chris Smith <cdsmith@gmail.com>
+Copyright:           (c) 2020, The CodeWorld Authors
+Build-type:          Simple
+Cabal-version:       >=1.8
+
+Description:
+  This module replaces base when building CodeWorld apps. It simplifies the Haskell
+  Prelude to remove the use of numeric type classes and unify some types.
+  .
+  This package is intended to be installed for GHCJS as part of the CodeWorld
+  server.  It will not work with other Haskell implementations.
+
+Library
+  Hs-source-dirs:      src
+  Js-sources:          jsbits/deep_eq.js
+  Exposed-modules:     Core,
+                       Image,
+                       Parameter,
+                       Prelude,
+                       Sketches,
+                       Extras.Colors,
+                       Extras.Cw,
+                       Extras.Op,
+                       Extras.Turtle,
+                       Extras.Util,
+                       Extras.Widget
+  Other-modules:       Internal.Exports,
+                       Internal.Num,
+                       Internal.Prelude,
+                       Internal.Text,
+                       Internal.Color,
+                       Internal.Picture,
+                       Internal.Event,
+                       Internal.CodeWorld,
+                       Internal.Truth
+  if impl(ghcjs -any)
+    Build-depends:       base,
+                         bytestring,
+                         codeworld-error-sanitizer,
+                         codeworld-api,
+                         ghc-prim,
+                         ghcjs-base,
+                         ghcjs-dom,
+                         mtl,
+                         random,
+                         random-shuffle,
+                         text,
+                         time
+  else
+    Build-depends:       base,
+                         bytestring,
+                         codeworld-error-sanitizer,
+                         codeworld-api,
+                         ghc-prim,
+                         ghcjs-base-stub,
+                         mtl,
+                         random,
+                         random-shuffle,
+                         text,
+                         time
+  Exposed:             False

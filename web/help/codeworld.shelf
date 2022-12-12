@@ -1,0 +1,29 @@
+{
+  "default": "help/GuideIntro.md",
+  "blocks": false,
+  "named": {
+    "Introduction":        "help/GuideIntro.md",
+    "Part 1: Expressions": "help/GuideUnit1.md",
+    "Part 2: Patterns":    "help/GuideUnit2.md",
+    "Part 3: Change":      "help/GuideUnit3.md",
+    "Part 4: Repetition":  "help/GuideUnit4.md",
+    "Part 5: State":       "help/GuideUnit5.md",
+    "Part 6: Data":        "help/GuideUnit6.md",
+    "Part 7: Computation": "help/GuideUnit7.md",
+    "Part 8: Abstraction": "help/GuideUnit8.md",
+    "Part 9: Modeling":    "help/GuideUnit9.md",
+    "Appendix": {
+      "Editor":    "help/editor.md",
+      "Examples":  "help/examples.md",
+      "Reference": "doc/Prelude.html",
+      "Reference: Sketches": "doc/Sketches.html",
+      "Extras": {
+        "Colors": "doc/Extras-Colors.html",
+        "Cw": "doc/Extras-Cw.html",
+        "Turtle": "doc/Extras-Turtle.html",
+        "Util": "doc/Extras-Util.html",
+        "Widget": "doc/Extras-Widget.html"
+      }
+    }
+  }
+}

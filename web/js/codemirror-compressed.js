@@ -1,0 +1,1 @@
+../../build/CodeMirror/codemirror-compressed.js

@@ -1,0 +1,62 @@
+Name:                codeworld-server
+Version:             0.1
+Synopsis:            Web server for CodeWorld
+License-file:        LICENSE
+Author:              The CodeWorld Authors
+Maintainer:          Chris Smith <cdsmith@gmail.com>
+Copyright:           (c) 2020, The CodeWorld Authors
+Build-type:          Simple
+Cabal-version:       >=1.2
+
+Description:
+  The web server for the CodeWorld programming environment.
+
+Executable codeworld-server-migrate
+  Hs-source-dirs: src
+  Main-is: Migration.hs
+  Other-modules: Model, Util
+  Build-depends:
+    base,
+    directory,
+    filepath
+
+Executable codeworld-server
+  Hs-source-dirs: src
+  Main-is: Main.hs
+  Other-modules: Model, Util
+
+  Build-depends:
+    aeson,
+    base,
+    base64-bytestring,
+    bytestring,
+    codeworld-account,
+    codeworld-auth,
+    codeworld-compiler,
+    cryptonite,
+    data-default,
+    directory,
+    fast-logger,
+    filelock,
+    filepath,
+    haskell-src-exts < 1.21,
+    http-conduit,
+    lifted-base,
+    memory,
+    mtl,
+    ormolu >= 0.1,
+    process,
+    regex-compat,
+    regex-tdfa,
+    SafeSemaphore,
+    snap-core,
+    snap-server,
+    temporary,
+    text,
+    unix,
+    vector
+
+  Ghc-options: -threaded
+               -Wall
+               -fno-warn-unused-do-bind
+               -funbox-strict-fields

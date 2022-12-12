@@ -1,0 +1,91 @@
+
+Name:                codeworld-compiler
+Version:             0.1.0.0
+Synopsis:            GHCJS based standalone compiler for CodeWorld
+License:             Apache-2.0
+License-file:        LICENSE
+Author:              The CodeWorld Authors
+Maintainer:          Chris Smith <cdsmith@gmail.com>
+Copyright:           (c) 2020, The CodeWorld Authors
+Build-type:          Simple
+Cabal-version:       >=1.10
+
+Description:
+  The GHCJS based standalone compiler for CodeWorld programming environment.
+
+Executable codeworld-compiler
+  Hs-source-dirs: exec
+  Main-is: Main.hs
+
+  Build-depends:
+    base,
+    codeworld-compiler,
+    directory,
+    filepath,
+    optparse-applicative,
+    temporary,
+    text
+
+Library
+  Exposed-modules:
+    CodeWorld.Compile,
+    CodeWorld.Compile.Base
+
+  Other-modules:
+    CodeWorld.Compile.Framework
+    CodeWorld.Compile.Requirements
+    CodeWorld.Compile.Requirements.Eval
+    CodeWorld.Compile.Requirements.Language
+    CodeWorld.Compile.Requirements.LegacyLanguage
+    CodeWorld.Compile.Requirements.Matcher
+    CodeWorld.Compile.Requirements.Types
+    CodeWorld.Compile.Stages
+
+  Build-depends:
+    aeson >= 1.1,
+    array,
+    base,
+    base64-bytestring,
+    bytestring,
+    codeworld-error-sanitizer,
+    containers,
+    cryptonite,
+    data-default,
+    directory,
+    exceptions,
+    filepath,
+    ghc == 8.6.5,
+    ghc-boot-th == 8.6.5,
+    hashable,
+    haskell-src-exts >= 1.20,
+    megaparsec >= 7.0.0 && < 8.0.0,
+    memory,
+    mtl,
+    process,
+    regex-tdfa,
+    regex-tdfa-text,
+    split,
+    syb,
+    temporary,
+    text,
+    yaml,
+    zlib
+
+  Hs-source-dirs: src
+
+  Exposed: True
+
+Test-Suite codeworld-compiler-test
+  Type:               exitcode-stdio-1.0
+  Main-is:            Main.hs
+  Hs-source-dirs:     test
+  Build-depends:
+    base,
+    codeworld-compiler,
+    containers,
+    directory,
+    filepath,
+    HUnit,
+    temporary,
+    test-framework,
+    test-framework-hunit

@@ -1,0 +1,1 @@
+../../build/bin/funblocks-client.jsexe/out.js
